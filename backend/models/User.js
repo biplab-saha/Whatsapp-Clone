@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { use } = require("react");
 
 const userSchema = new mongoose.Schema({
   phoneNumber: { type: String, unique: true, sparse: true },
@@ -20,6 +21,10 @@ const userSchema = new mongoose.Schema({
    about:{type:String},
    lastSeen:{type:Date},
    isOnline:{type:Boolean,default:false},
-   isVerified:({ype:Boolean,default:false},
+   isVerified:{ype:Boolean,default:false},
    agreed:{type:Boolean,default:false},
-});
+},{timestamps:true});
+
+
+const User =mongoose.model('User',userSchema);
+module.exports = User;
